@@ -25,12 +25,16 @@ jobs:
         uses: docker://marpteam/marp-cli:v4.1.1
         with:
           args: -I slides/ -o build/
-      
+        env:
+          MARP_USER: root:root
+
       - name: Marp Build pdf (build folder)
         uses: docker://marpteam/marp-cli:v4.1.1
         with:
           args: --pdf --pdf-outlines --allow-local-files -I slides/ -o build/ --set-theme slides/themes/base.css
-      
+        env:
+          MARP_USER: root:root
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
